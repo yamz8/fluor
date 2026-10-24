@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="14" fill="#FFD60A"/>
+  <!-- Three overlapping emission spectra over a laser line. -->
+  <path d="M6 50 C14 50 15 18 20 18 C25 18 26 44 40 50 Z" fill="#0e0e10" fill-opacity="0.85"/>
+  <path d="M14 50 C22 50 24 24 30 24 C36 24 37 44 52 50 Z" fill="#0e0e10" fill-opacity="0.55"/>
+  <path d="M24 50 C32 50 34 30 40 30 C46 30 48 45 60 50 Z" fill="#0e0e10" fill-opacity="0.3"/>
+  <rect x="17" y="10" width="2.5" height="40" fill="#0e0e10"/>
+  <rect x="6" y="50" width="52" height="2.5" rx="1" fill="#0e0e10"/>
+</svg>
