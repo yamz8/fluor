@@ -105,8 +105,13 @@ Panel Panel::fromJson(const QJsonObject &object, QString *error) {
             if (!parseFilter(text.toString(), &filter))
                 return failWith(error, QString("Filter \"%1\" on the %2 nm laser is not center/width, as 530/30.")
                                            .arg(text.toString()).arg(laser.nm));
+            if (laser.filters.contains(filter))
+                return failWith(error, QString("The %1 nm laser has the %2 filter twice.").arg(laser.nm).arg(filter.name()));
             laser.filters << filter;
         }
+        for (const auto &other : panel.lasers)
+            if (other.nm == laser.nm)
+                return failWith(error, QString("There are two %1 nm lasers; list each laser once.").arg(laser.nm));
         panel.lasers << laser;
     }
     for (const auto &value : object.value("dyes").toArray()) {

@@ -27,6 +27,26 @@ bool isSubsequence(const QString &needle, const QString &haystack) {
     return at == needle.size();
 }
 
+// Dyes find their detector by laser wavelength and filter, so no two lasers
+// share a wavelength and no laser has the same filter twice. A value already
+// taken is stepped past, in the direction the user was going, or the other
+// way at the end of the range; -1 when there is no room either way.
+int untaken(const QList<int> &taken, int value, int step, int lowest, int highest) {
+    for (const int direction : {step, -step})
+        for (int v = value; v >= lowest && v <= highest; v += direction)
+            if (!taken.contains(v))
+                return v;
+    return -1;
+}
+
+QList<int> wavelengths(const QList<Laser> &lasers, int except = -1) {
+    QList<int> list;
+    for (int l = 0; l < lasers.size(); ++l)
+        if (l != except)
+            list << lasers[l].nm;
+    return list;
+}
+
 QString localPath(const QString &pathOrUrl) {
     const QUrl url(pathOrUrl);
     return url.isLocalFile() ? url.toLocalFile() : pathOrUrl;
@@ -323,8 +343,12 @@ void Backend::applyPreset(const QString &id) {
 }
 
 void Backend::addLaser(int nm) {
+    nm = untaken(wavelengths(m_panel.lasers), std::clamp(nm, spectra::First, spectra::Last), 1,
+                 spectra::First, spectra::Last);
+    if (nm < 0)
+        return;
     edit([nm](Panel &panel) {
-        panel.lasers << Laser{std::clamp(nm, spectra::First, spectra::Last), {Filter{std::min(nm + 30, spectra::Last), 30}}};
+        panel.lasers << Laser{nm, {Filter{std::min(nm + 30, spectra::Last - 15), 30}}};
     });
 }
 
@@ -344,7 +368,13 @@ void Backend::removeLaser(int laser) {
 void Backend::setLaser(int laser, int nm) {
     if (laser < 0 || laser >= m_panel.lasers.size())
         return;
-    nm = std::clamp(nm, spectra::First, spectra::Last);
+    const int previous = m_panel.lasers[laser].nm;
+    nm = untaken(wavelengths(m_panel.lasers, laser), std::clamp(nm, spectra::First, spectra::Last),
+                 nm >= previous ? 1 : -1, spectra::First, spectra::Last);
+    if (nm < 0) {
+        emit changed();  // Puts the spin box back.
+        return;
+    }
     edit([&](Panel &panel) {
         const int old = panel.lasers[laser].nm;
         panel.lasers[laser].nm = nm;
@@ -359,8 +389,15 @@ void Backend::addFilter(int laser) {
         return;
     edit([laser](Panel &panel) {
         auto &filters = panel.lasers[laser].filters;
-        const int center = filters.isEmpty() ? panel.lasers[laser].nm + 30 : filters.last().center + 50;
-        filters << Filter{std::min(center, spectra::Last - 20), 30};
+        QList<int> centers;
+        for (const auto &filter : filters)
+            if (filter.width == 30)
+                centers << filter.center;
+        const int start = filters.isEmpty() ? panel.lasers[laser].nm + 30 : filters.last().center + 50;
+        const int center = untaken(centers, std::clamp(start, spectra::First + 15, spectra::Last - 15), 10,
+                                   spectra::First + 15, spectra::Last - 15);
+        if (center >= 0)
+            filters << Filter{center, 30};
     });
 }
 
@@ -378,7 +415,27 @@ void Backend::removeFilter(int laser, int filter) {
 void Backend::setFilter(int laser, int filter, int center, int width) {
     if (laser < 0 || laser >= m_panel.lasers.size() || filter < 0 || filter >= m_panel.lasers[laser].filters.size())
         return;
-    const Filter tuned{std::clamp(center, spectra::First, spectra::Last), std::clamp(width, 1, 300)};
+    Filter tuned{std::clamp(center, spectra::First, spectra::Last), std::clamp(width, 1, 300)};
+    const Filter current = m_panel.lasers[laser].filters[filter];
+    QList<int> taken;
+    for (int f = 0; f < m_panel.lasers[laser].filters.size(); ++f) {
+        const Filter &other = m_panel.lasers[laser].filters[f];
+        if (f == filter)
+            continue;
+        // Only filters matching the part not being changed can clash.
+        if (tuned.center != current.center && other.width == tuned.width)
+            taken << other.center;
+        else if (tuned.center == current.center && other.center == tuned.center)
+            taken << other.width;
+    }
+    if (tuned.center != current.center)
+        tuned.center = untaken(taken, tuned.center, tuned.center > current.center ? 1 : -1, spectra::First, spectra::Last);
+    else
+        tuned.width = untaken(taken, tuned.width, tuned.width > current.width ? 1 : -1, 1, 300);
+    if (tuned.center < 0 || tuned.width < 0) {
+        emit changed();  // Puts the spin boxes back.
+        return;
+    }
     edit([&](Panel &panel) {
         Filter &band = panel.lasers[laser].filters[filter];
         for (auto &entry : panel.dyes)

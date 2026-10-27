@@ -271,6 +271,38 @@ private slots:
         QVERIFY2(error.contains("brightness"), qPrintable(error));
     }
 
+    void steppingALaserSkipsAnotherLasersWavelength()
+    {
+        Backend backend;
+        backend.applyPreset("vbyr");  // 405, 488, 561, 640
+        backend.addDye("FITC");
+        backend.addDye("PE");
+        QCOMPARE(backend.panel().dyes[1].laser, 561);
+        for (int nm = 489; nm <= 563; ++nm)
+            backend.setLaser(1, nm);
+        QCOMPARE(backend.panel().lasers[1].nm, 563);
+        QCOMPARE(backend.panel().lasers[2].nm, 561);
+        QCOMPARE(backend.panel().dyes[0].laser, 563);  // FITC went with its laser...
+        QCOMPARE(backend.panel().dyes[1].laser, 561);  // ...and PE stayed with its own.
+    }
+
+    void filtersStayDistinct()
+    {
+        Backend backend;
+        for (int i = 0; i < 30; ++i)
+            backend.addFilter(0);
+        const auto &filters = backend.panel().lasers[0].filters;
+        for (int a = 0; a < filters.size(); ++a)
+            for (int b = a + 1; b < filters.size(); ++b)
+                QVERIFY(!(filters[a] == filters[b]));
+        // Retuning one filter onto another steps past it.
+        backend.setFilter(0, 1, filters[0].center, filters[0].width);
+        QVERIFY(!(backend.panel().lasers[0].filters[1] == backend.panel().lasers[0].filters[0]));
+        QString error;
+        Panel::fromJson(QJsonDocument::fromJson(R"({"lasers": [{"nm": 488}, {"nm": 488}]})").object(), &error);
+        QVERIFY(error.contains("two 488 nm lasers"));
+    }
+
     void themeFallsBack()
     {
         QTemporaryDir dir;
