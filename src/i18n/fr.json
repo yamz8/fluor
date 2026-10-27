@@ -81,5 +81,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "Le sélecteur de fichiers du bureau (xdg-desktop-portal) n’est pas disponible.",
   "Could not listen for the file chooser's answer.": "Impossible d’écouter la réponse du sélecteur de fichiers.",
   "The file chooser failed: %1": "Le sélecteur de fichiers a échoué : %1",
-  "Plan fluorophore panels against your lasers and filters": "Planifiez vos panels de fluorochromes selon vos lasers et filtres"
+  "Plan fluorophore panels against your lasers and filters": "Planifiez vos panels de fluorochromes selon vos lasers et filtres",
+  "%1's detector sees almost none of its light": "Le détecteur de %1 ne capte presque rien de sa lumière",
+  "%1 already exists. Save again and choose it to replace it.": "%1 existe déjà. Enregistrez à nouveau et choisissez-le pour le remplacer."
 }

@@ -80,5 +80,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "Töölaua failivalija (xdg-desktop-portal) pole saadaval.",
   "Could not listen for the file chooser's answer.": "Failivalija vastust ei õnnestunud kuulata.",
   "The file chooser failed: %1": "Failivalija nurjus: %1",
-  "Plan fluorophore panels against your lasers and filters": "Planeeri fluorofooride paneele oma laserite ja filtrite järgi"
+  "Plan fluorophore panels against your lasers and filters": "Planeeri fluorofooride paneele oma laserite ja filtrite järgi",
+  "%1's detector sees almost none of its light": "Värvi %1 detektor ei näe peaaegu üldse selle valgust",
+  "%1 already exists. Save again and choose it to replace it.": "%1 on juba olemas. Salvesta uuesti ja vali see, et see asendada."
 }

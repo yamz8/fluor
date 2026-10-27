@@ -81,5 +81,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "Системный диалог выбора файлов (xdg-desktop-portal) недоступен.",
   "Could not listen for the file chooser's answer.": "Не удалось получить ответ диалога выбора файлов.",
   "The file chooser failed: %1": "Ошибка диалога выбора файлов: %1",
-  "Plan fluorophore panels against your lasers and filters": "Планирование панелей флуорофоров под ваши лазеры и фильтры"
+  "Plan fluorophore panels against your lasers and filters": "Планирование панелей флуорофоров под ваши лазеры и фильтры",
+  "%1's detector sees almost none of its light": "Детектор красителя %1 почти не видит его свечения",
+  "%1 already exists. Save again and choose it to replace it.": "%1 уже существует. Сохраните ещё раз и выберите его, чтобы заменить."
 }

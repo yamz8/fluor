@@ -79,5 +79,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "デスクトップのファイル選択ダイアログ (xdg-desktop-portal) が利用できません。",
   "Could not listen for the file chooser's answer.": "ファイル選択ダイアログの応答を待ち受けできませんでした。",
   "The file chooser failed: %1": "ファイル選択ダイアログが失敗しました: %1",
-  "Plan fluorophore panels against your lasers and filters": "レーザーとフィルターに合わせて蛍光色素パネルを設計"
+  "Plan fluorophore panels against your lasers and filters": "レーザーとフィルターに合わせて蛍光色素パネルを設計",
+  "%1's detector sees almost none of its light": "%1 の検出器はその蛍光をほとんど捉えていません",
+  "%1 already exists. Save again and choose it to replace it.": "%1 は既に存在します。置き換えるには、もう一度保存してそのファイルを選んでください。"
 }

@@ -84,5 +84,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "منتقي الملفات في سطح المكتب (xdg-desktop-portal) غير متاح.",
   "Could not listen for the file chooser's answer.": "تعذّر انتظار ردّ منتقي الملفات.",
   "The file chooser failed: %1": "فشل منتقي الملفات: %1",
-  "Plan fluorophore panels against your lasers and filters": "خطّط لوحات الأصباغ الفلورية وفق الليزرات والمرشّحات لديك"
+  "Plan fluorophore panels against your lasers and filters": "خطّط لوحات الأصباغ الفلورية وفق الليزرات والمرشّحات لديك",
+  "%1's detector sees almost none of its light": "كاشف %1 لا يرى شيئًا تقريبًا من ضوئه",
+  "%1 already exists. Save again and choose it to replace it.": "%1 موجود بالفعل. احفظ مرة أخرى واختره لاستبداله."
 }

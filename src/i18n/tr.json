@@ -80,5 +80,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "Masaüstü dosya seçici (xdg-desktop-portal) kullanılamıyor.",
   "Could not listen for the file chooser's answer.": "Dosya seçicinin yanıtı dinlenemedi.",
   "The file chooser failed: %1": "Dosya seçici başarısız oldu: %1",
-  "Plan fluorophore panels against your lasers and filters": "Florofor panellerini lazer ve filtrelerinize göre planlayın"
+  "Plan fluorophore panels against your lasers and filters": "Florofor panellerini lazer ve filtrelerinize göre planlayın",
+  "%1's detector sees almost none of its light": "%1 dedektörü ışığının neredeyse hiçbirini görmüyor",
+  "%1 already exists. Save again and choose it to replace it.": "%1 zaten var. Değiştirmek için yeniden kaydedin ve onu seçin."
 }

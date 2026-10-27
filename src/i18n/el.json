@@ -80,5 +80,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "Ο επιλογέας αρχείων (xdg-desktop-portal) δεν είναι διαθέσιμος.",
   "Could not listen for the file chooser's answer.": "Αδυναμία λήψης απάντησης από τον επιλογέα αρχείων.",
   "The file chooser failed: %1": "Ο επιλογέας αρχείων απέτυχε: %1",
-  "Plan fluorophore panels against your lasers and filters": "Σχεδιάστε πάνελ φθοροφόρων για τα λέιζερ και τα φίλτρα σας"
+  "Plan fluorophore panels against your lasers and filters": "Σχεδιάστε πάνελ φθοροφόρων για τα λέιζερ και τα φίλτρα σας",
+  "%1's detector sees almost none of its light": "Ο ανιχνευτής της %1 δεν βλέπει σχεδόν καθόλου το φως της",
+  "%1 already exists. Save again and choose it to replace it.": "Το %1 υπάρχει ήδη. Αποθηκεύστε ξανά και επιλέξτε το για να το αντικαταστήσετε."
 }

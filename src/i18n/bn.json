@@ -80,5 +80,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "ডেস্কটপ ফাইল চুজার (xdg-desktop-portal) উপলব্ধ নয়।",
   "Could not listen for the file chooser's answer.": "ফাইল চুজারের উত্তর শোনা যায়নি।",
   "The file chooser failed: %1": "ফাইল চুজার ব্যর্থ হয়েছে: %1",
-  "Plan fluorophore panels against your lasers and filters": "আপনার লেজার ও ফিল্টার অনুযায়ী ফ্লুরোফোর প্যানেল পরিকল্পনা করুন"
+  "Plan fluorophore panels against your lasers and filters": "আপনার লেজার ও ফিল্টার অনুযায়ী ফ্লুরোফোর প্যানেল পরিকল্পনা করুন",
+  "%1's detector sees almost none of its light": "%1-এর detector তার আলো প্রায় দেখতেই পায় না",
+  "%1 already exists. Save again and choose it to replace it.": "%1 আগে থেকেই আছে। আবার সংরক্ষণ করুন এবং প্রতিস্থাপন করতে সেটি বেছে নিন।"
 }

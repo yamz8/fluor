@@ -80,5 +80,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "Skrivebordets filvælger (xdg-desktop-portal) er ikke tilgængelig.",
   "Could not listen for the file chooser's answer.": "Kunne ikke lytte efter filvælgerens svar.",
   "The file chooser failed: %1": "Filvælgeren fejlede: %1",
-  "Plan fluorophore panels against your lasers and filters": "Planlæg fluorokrompaneler ud fra dine lasere og filtre"
+  "Plan fluorophore panels against your lasers and filters": "Planlæg fluorokrompaneler ud fra dine lasere og filtre",
+  "%1's detector sees almost none of its light": "Detektoren for %1 ser næsten intet af dens lys",
+  "%1 already exists. Save again and choose it to replace it.": "%1 findes allerede. Gem igen, og vælg den for at erstatte den."
 }

@@ -80,5 +80,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "டெஸ்க்டாப் கோப்புத் தேர்வி (xdg-desktop-portal) கிடைக்கவில்லை.",
   "Could not listen for the file chooser's answer.": "கோப்புத் தேர்வியின் பதிலைக் கேட்க முடியவில்லை.",
   "The file chooser failed: %1": "கோப்புத் தேர்வி தோல்வியடைந்தது: %1",
-  "Plan fluorophore panels against your lasers and filters": "உங்கள் லேசர்கள், ஃபில்டர்களுக்கு ஏற்ப ஃப்ளோரோஃபோர் பேனல்களைத் திட்டமிடுங்கள்"
+  "Plan fluorophore panels against your lasers and filters": "உங்கள் லேசர்கள், ஃபில்டர்களுக்கு ஏற்ப ஃப்ளோரோஃபோர் பேனல்களைத் திட்டமிடுங்கள்",
+  "%1's detector sees almost none of its light": "%1-இன் கண்டறிவான் அதன் ஒளியை கிட்டத்தட்ட காணவில்லை",
+  "%1 already exists. Save again and choose it to replace it.": "%1 ஏற்கனவே உள்ளது. மீண்டும் சேமித்து, மாற்ற அதைத் தேர்ந்தெடுக்கவும்."
 }

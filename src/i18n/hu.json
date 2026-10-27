@@ -80,5 +80,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "Az asztali fájlválasztó (xdg-desktop-portal) nem érhető el.",
   "Could not listen for the file chooser's answer.": "Nem sikerült fogadni a fájlválasztó válaszát.",
   "The file chooser failed: %1": "A fájlválasztó hibát jelzett: %1",
-  "Plan fluorophore panels against your lasers and filters": "Fluorofór panelek tervezése a lézereihez és szűrőihez"
+  "Plan fluorophore panels against your lasers and filters": "Fluorofór panelek tervezése a lézereihez és szűrőihez",
+  "%1's detector sees almost none of its light": "A(z) %1 detektora szinte semmit sem lát a fényéből",
+  "%1 already exists. Save again and choose it to replace it.": "A(z) %1 már létezik. Mentsd újra, és válaszd ki a cseréjéhez."
 }

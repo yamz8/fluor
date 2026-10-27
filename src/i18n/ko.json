@@ -79,5 +79,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "데스크톱 파일 선택기(xdg-desktop-portal)를 사용할 수 없습니다.",
   "Could not listen for the file chooser's answer.": "파일 선택기의 응답을 수신할 수 없습니다.",
   "The file chooser failed: %1": "파일 선택기 오류: %1",
-  "Plan fluorophore panels against your lasers and filters": "레이저와 필터에 맞춰 형광 패널 설계"
+  "Plan fluorophore panels against your lasers and filters": "레이저와 필터에 맞춰 형광 패널 설계",
+  "%1's detector sees almost none of its light": "%1의 검출기가 그 빛을 거의 보지 못합니다",
+  "%1 already exists. Save again and choose it to replace it.": "%1이(가) 이미 있습니다. 바꾸려면 다시 저장하고 해당 파일을 선택하세요."
 }

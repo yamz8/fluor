@@ -80,5 +80,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "ڈیسک ٹاپ فائل چوزر (xdg-desktop-portal) دستیاب نہیں۔",
   "Could not listen for the file chooser's answer.": "فائل چوزر کا جواب نہیں سنا جا سکا۔",
   "The file chooser failed: %1": "فائل چوزر ناکام ہو گیا: %1",
-  "Plan fluorophore panels against your lasers and filters": "اپنے لیزرز اور فلٹرز کے مطابق فلوروفور پینل بنائیں"
+  "Plan fluorophore panels against your lasers and filters": "اپنے لیزرز اور فلٹرز کے مطابق فلوروفور پینل بنائیں",
+  "%1's detector sees almost none of its light": "%1 کا detector اس کی روشنی تقریباً نہیں دیکھتا",
+  "%1 already exists. Save again and choose it to replace it.": "%1 پہلے سے موجود ہے۔ دوبارہ محفوظ کریں اور اسے بدلنے کے لیے منتخب کریں۔"
 }

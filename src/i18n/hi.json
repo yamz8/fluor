@@ -80,5 +80,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "डेस्कटॉप फ़ाइल चयनकर्ता (xdg-desktop-portal) उपलब्ध नहीं है।",
   "Could not listen for the file chooser's answer.": "फ़ाइल चयनकर्ता का जवाब सुना नहीं जा सका।",
   "The file chooser failed: %1": "फ़ाइल चयनकर्ता विफल रहा: %1",
-  "Plan fluorophore panels against your lasers and filters": "अपने लेज़र और फ़िल्टर के अनुसार फ़्लोरोफ़ोर पैनल की योजना बनाएं"
+  "Plan fluorophore panels against your lasers and filters": "अपने लेज़र और फ़िल्टर के अनुसार फ़्लोरोफ़ोर पैनल की योजना बनाएं",
+  "%1's detector sees almost none of its light": "%1 का detector उसकी रोशनी लगभग नहीं देख पाता",
+  "%1 already exists. Save again and choose it to replace it.": "%1 पहले से मौजूद है। फिर से सहेजें और उसे बदलने के लिए चुनें।"
 }

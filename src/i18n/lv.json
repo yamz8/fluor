@@ -81,5 +81,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "Darbvirsmas failu atlasītājs (xdg-desktop-portal) nav pieejams.",
   "Could not listen for the file chooser's answer.": "Neizdevās saņemt failu atlasītāja atbildi.",
   "The file chooser failed: %1": "Failu atlasītāja kļūda: %1",
-  "Plan fluorophore panels against your lasers and filters": "Plānojiet fluoroforu paneļus saviem lāzeriem un filtriem"
+  "Plan fluorophore panels against your lasers and filters": "Plānojiet fluoroforu paneļus saviem lāzeriem un filtriem",
+  "%1's detector sees almost none of its light": "Krāsvielas %1 detektors gandrīz neredz tās gaismu",
+  "%1 already exists. Save again and choose it to replace it.": "%1 jau pastāv. Saglabājiet vēlreiz un izvēlieties to, lai aizstātu."
 }

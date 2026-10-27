@@ -81,5 +81,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "Selectorul de fișiere al desktopului (xdg-desktop-portal) nu este disponibil.",
   "Could not listen for the file chooser's answer.": "Nu s-a putut aștepta răspunsul selectorului de fișiere.",
   "The file chooser failed: %1": "Selectorul de fișiere a eșuat: %1",
-  "Plan fluorophore panels against your lasers and filters": "Planifică panouri de fluorofori pentru laserele și filtrele tale"
+  "Plan fluorophore panels against your lasers and filters": "Planifică panouri de fluorofori pentru laserele și filtrele tale",
+  "%1's detector sees almost none of its light": "Detectorul lui %1 nu vede aproape deloc lumina sa",
+  "%1 already exists. Save again and choose it to replace it.": "%1 există deja. Salvează din nou și alege-l pentru a-l înlocui."
 }

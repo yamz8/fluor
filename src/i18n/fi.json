@@ -80,5 +80,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "Työpöydän tiedostonvalitsin (xdg-desktop-portal) ei ole käytettävissä.",
   "Could not listen for the file chooser's answer.": "Tiedostonvalitsimen vastausta ei voitu kuunnella.",
   "The file chooser failed: %1": "Tiedostonvalitsin epäonnistui: %1",
-  "Plan fluorophore panels against your lasers and filters": "Suunnittele fluorokromipaneelit lasereidesi ja suotimiesi mukaan"
+  "Plan fluorophore panels against your lasers and filters": "Suunnittele fluorokromipaneelit lasereidesi ja suotimiesi mukaan",
+  "%1's detector sees almost none of its light": "Väriaineen %1 detektori ei näe juuri lainkaan sen valoa",
+  "%1 already exists. Save again and choose it to replace it.": "%1 on jo olemassa. Tallenna uudelleen ja valitse se korvataksesi sen."
 }

@@ -80,5 +80,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "Ish stoli fayl tanlagichi (xdg-desktop-portal) mavjud emas.",
   "Could not listen for the file chooser's answer.": "Fayl tanlagichi javobini tinglab boʻlmadi.",
   "The file chooser failed: %1": "Fayl tanlagichi ishlamadi: %1",
-  "Plan fluorophore panels against your lasers and filters": "Lazer va filtrlaringizga mos fluorofor panellarini rejalashtiring"
+  "Plan fluorophore panels against your lasers and filters": "Lazer va filtrlaringizga mos fluorofor panellarini rejalashtiring",
+  "%1's detector sees almost none of its light": "%1 detektori uning nurini deyarli koʻrmaydi",
+  "%1 already exists. Save again and choose it to replace it.": "%1 allaqachon mavjud. Uni almashtirish uchun qayta saqlang va uni tanlang."
 }

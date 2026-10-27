@@ -81,5 +81,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "בורר הקבצים של שולחן העבודה (xdg-desktop-portal) אינו זמין.",
   "Could not listen for the file chooser's answer.": "לא ניתן להאזין לתשובת בורר הקבצים.",
   "The file chooser failed: %1": "בורר הקבצים נכשל: %1",
-  "Plan fluorophore panels against your lasers and filters": "תכנון פאנלים של פלואורופורים לפי הלייזרים והמסננים שלך"
+  "Plan fluorophore panels against your lasers and filters": "תכנון פאנלים של פלואורופורים לפי הלייזרים והמסננים שלך",
+  "%1's detector sees almost none of its light": "הגלאי של %1 כמעט אינו קולט את האור שלו",
+  "%1 already exists. Save again and choose it to replace it.": "%1 כבר קיים. שמור שוב ובחר בו כדי להחליף אותו."
 }

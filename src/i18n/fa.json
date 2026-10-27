@@ -80,5 +80,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "انتخابگر فایل میزکار (xdg-desktop-portal) در دسترس نیست.",
   "Could not listen for the file chooser's answer.": "گوش دادن به پاسخ انتخابگر فایل ممکن نشد.",
   "The file chooser failed: %1": "انتخابگر فایل ناموفق بود: %1",
-  "Plan fluorophore panels against your lasers and filters": "پنل‌های فلوروفور را بر اساس لیزرها و فیلترهای خود طراحی کنید"
+  "Plan fluorophore panels against your lasers and filters": "پنل‌های فلوروفور را بر اساس لیزرها و فیلترهای خود طراحی کنید",
+  "%1's detector sees almost none of its light": "آشکارساز %1 تقریباً هیچ‌یک از نور آن را نمی‌بیند",
+  "%1 already exists. Save again and choose it to replace it.": "%1 از قبل وجود دارد. دوباره ذخیره کنید و برای جایگزینی آن را انتخاب کنید."
 }

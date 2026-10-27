@@ -79,5 +79,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "ตัวเลือกไฟล์ของเดสก์ท็อป (xdg-desktop-portal) ไม่พร้อมใช้งาน",
   "Could not listen for the file chooser's answer.": "ไม่สามารถรอรับคำตอบจากตัวเลือกไฟล์ได้",
   "The file chooser failed: %1": "ตัวเลือกไฟล์ล้มเหลว: %1",
-  "Plan fluorophore panels against your lasers and filters": "ออกแบบพาเนลฟลูออโรฟอร์ตามเลเซอร์และฟิลเตอร์ของคุณ"
+  "Plan fluorophore panels against your lasers and filters": "ออกแบบพาเนลฟลูออโรฟอร์ตามเลเซอร์และฟิลเตอร์ของคุณ",
+  "%1's detector sees almost none of its light": "ดีเทคเตอร์ของ %1 แทบมองไม่เห็นแสงของมันเลย",
+  "%1 already exists. Save again and choose it to replace it.": "%1 มีอยู่แล้ว บันทึกอีกครั้งแล้วเลือกไฟล์นั้นเพื่อแทนที่"
 }

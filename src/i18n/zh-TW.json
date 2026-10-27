@@ -79,5 +79,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "桌面檔案選擇器 (xdg-desktop-portal) 無法使用。",
   "Could not listen for the file chooser's answer.": "無法監聽檔案選擇器的回應。",
   "The file chooser failed: %1": "檔案選擇器發生錯誤：%1",
-  "Plan fluorophore panels against your lasers and filters": "依據您的雷射和濾光片設計螢光染料組合"
+  "Plan fluorophore panels against your lasers and filters": "依據您的雷射和濾光片設計螢光染料組合",
+  "%1's detector sees almost none of its light": "%1 的偵測器幾乎偵測不到它的光",
+  "%1 already exists. Save again and choose it to replace it.": "%1 已存在。請再次儲存並選擇它以取代。"
 }

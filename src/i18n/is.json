@@ -80,5 +80,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "Skráaval skjáborðsins (xdg-desktop-portal) er ekki tiltækt.",
   "Could not listen for the file chooser's answer.": "Ekki tókst að hlusta eftir svari skráavalsins.",
   "The file chooser failed: %1": "Skráavalið mistókst: %1",
-  "Plan fluorophore panels against your lasers and filters": "Skipuleggðu flúrlitapanela út frá leysum og síum"
+  "Plan fluorophore panels against your lasers and filters": "Skipuleggðu flúrlitapanela út frá leysum og síum",
+  "%1's detector sees almost none of its light": "Nemi %1 sér nánast ekkert af ljósi þess",
+  "%1 already exists. Save again and choose it to replace it.": "%1 er þegar til. Vistaðu aftur og veldu skrána til að skipta henni út."
 }

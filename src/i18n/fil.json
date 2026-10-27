@@ -80,5 +80,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "Hindi available ang desktop file chooser (xdg-desktop-portal).",
   "Could not listen for the file chooser's answer.": "Hindi matanggap ang sagot ng file chooser.",
   "The file chooser failed: %1": "Nabigo ang file chooser: %1",
-  "Plan fluorophore panels against your lasers and filters": "Magplano ng fluorophore panel ayon sa iyong mga laser at filter"
+  "Plan fluorophore panels against your lasers and filters": "Magplano ng fluorophore panel ayon sa iyong mga laser at filter",
+  "%1's detector sees almost none of its light": "Halos walang nakikitang liwanag ang detector ng %1",
+  "%1 already exists. Save again and choose it to replace it.": "Mayroon nang %1. I-save muli at piliin ito para palitan."
 }

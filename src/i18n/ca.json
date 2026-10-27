@@ -81,5 +81,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "El selector de fitxers de l'escriptori (xdg-desktop-portal) no està disponible.",
   "Could not listen for the file chooser's answer.": "No s'ha pogut esperar la resposta del selector de fitxers.",
   "The file chooser failed: %1": "El selector de fitxers ha fallat: %1",
-  "Plan fluorophore panels against your lasers and filters": "Planifica panells de fluoròfors segons els teus làsers i filtres"
+  "Plan fluorophore panels against your lasers and filters": "Planifica panells de fluoròfors segons els teus làsers i filtres",
+  "%1's detector sees almost none of its light": "El detector de %1 gairebé no capta la seva llum",
+  "%1 already exists. Save again and choose it to replace it.": "%1 ja existeix. Torneu a desar i trieu-lo per substituir-lo."
 }

@@ -83,5 +83,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "Níl roghnóir comhad na deisce (xdg-desktop-portal) ar fáil.",
   "Could not listen for the file chooser's answer.": "Níorbh fhéidir éisteacht le freagra an roghnóra comhad.",
   "The file chooser failed: %1": "Theip ar an roghnóir comhad: %1",
-  "Plan fluorophore panels against your lasers and filters": "Pleanáil painéil fluaraifóir do do léasair agus scagairí"
+  "Plan fluorophore panels against your lasers and filters": "Pleanáil painéil fluaraifóir do do léasair agus scagairí",
+  "%1's detector sees almost none of its light": "Is beag nach bhfeiceann brathadóir %1 aon chuid dá sholas",
+  "%1 already exists. Save again and choose it to replace it.": "Tá %1 ann cheana. Sábháil arís agus roghnaigh é chun é a athsholáthar."
 }

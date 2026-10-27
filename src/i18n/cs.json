@@ -81,5 +81,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "Dialog pro výběr souborů (xdg-desktop-portal) není k dispozici.",
   "Could not listen for the file chooser's answer.": "Nelze čekat na odpověď dialogu pro výběr souborů.",
   "The file chooser failed: %1": "Dialog pro výběr souborů selhal: %1",
-  "Plan fluorophore panels against your lasers and filters": "Plánujte panely fluoroforů podle svých laserů a filtrů"
+  "Plan fluorophore panels against your lasers and filters": "Plánujte panely fluoroforů podle svých laserů a filtrů",
+  "%1's detector sees almost none of its light": "Detektor barviva %1 nevidí téměř nic z jeho světla",
+  "%1 already exists. Save again and choose it to replace it.": "%1 už existuje. Uložte znovu a vyberte jej, chcete-li ho nahradit."
 }

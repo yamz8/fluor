@@ -80,5 +80,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "ඩෙස්ක්ටොප් ගොනු තේරීම (xdg-desktop-portal) ලබා ගත නොහැක.",
   "Could not listen for the file chooser's answer.": "ගොනු තේරීමේ පිළිතුරට සවන් දිය නොහැකි විය.",
   "The file chooser failed: %1": "ගොනු තේරීම අසාර්ථක විය: %1",
-  "Plan fluorophore panels against your lasers and filters": "ඔබේ ලේසර් හා පෙරහන් අනුව ෆ්ලෝරෝෆෝර් පැනල සැලසුම් කරන්න"
+  "Plan fluorophore panels against your lasers and filters": "ඔබේ ලේසර් හා පෙරහන් අනුව ෆ්ලෝරෝෆෝර් පැනල සැලසුම් කරන්න",
+  "%1's detector sees almost none of its light": "%1 හි අනාවරකයට එහි ආලෝකය කිසිවක් පාහේ නොපෙනේ",
+  "%1 already exists. Save again and choose it to replace it.": "%1 දැනටමත් පවතී. නැවත සුරකින්න, එය ප්‍රතිස්ථාපනය කිරීමට එය තෝරන්න."
 }

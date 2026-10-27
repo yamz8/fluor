@@ -81,5 +81,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "Birač datoteka radne površine (xdg-desktop-portal) nije dostupan.",
   "Could not listen for the file chooser's answer.": "Nije moguće čekati odgovor birača datoteka.",
   "The file chooser failed: %1": "Birač datoteka nije uspio: %1",
-  "Plan fluorophore panels against your lasers and filters": "Planiraj panele fluorofora prema svojim laserima i filtrima"
+  "Plan fluorophore panels against your lasers and filters": "Planiraj panele fluorofora prema svojim laserima i filtrima",
+  "%1's detector sees almost none of its light": "Detektor boje %1 ne vidi gotovo ništa od njezine svjetlosti",
+  "%1 already exists. Save again and choose it to replace it.": "%1 već postoji. Spremi ponovno i odaberi ga da ga zamijeniš."
 }

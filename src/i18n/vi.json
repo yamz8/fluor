@@ -79,5 +79,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "Không có trình chọn tệp của máy tính (xdg-desktop-portal).",
   "Could not listen for the file chooser's answer.": "Không thể nhận phản hồi từ trình chọn tệp.",
   "The file chooser failed: %1": "Trình chọn tệp bị lỗi: %1",
-  "Plan fluorophore panels against your lasers and filters": "Thiết kế panel huỳnh quang theo laser và bộ lọc của bạn"
+  "Plan fluorophore panels against your lasers and filters": "Thiết kế panel huỳnh quang theo laser và bộ lọc của bạn",
+  "%1's detector sees almost none of its light": "Đầu dò của %1 gần như không thấy ánh sáng của nó",
+  "%1 already exists. Save again and choose it to replace it.": "%1 đã tồn tại. Hãy lưu lại và chọn tệp đó để thay thế."
 }

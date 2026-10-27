@@ -82,5 +82,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "Izbirnik datotek namizja (xdg-desktop-portal) ni na voljo.",
   "Could not listen for the file chooser's answer.": "Ni mogoče čakati na odgovor izbirnika datotek.",
   "The file chooser failed: %1": "Izbirnik datotek ni uspel: %1",
-  "Plan fluorophore panels against your lasers and filters": "Načrtujte panele fluoroforov glede na svoje laserje in filtre"
+  "Plan fluorophore panels against your lasers and filters": "Načrtujte panele fluoroforov glede na svoje laserje in filtre",
+  "%1's detector sees almost none of its light": "Detektor barvila %1 ne zazna skoraj nič njegove svetlobe",
+  "%1 already exists. Save again and choose it to replace it.": "%1 že obstaja. Shranite znova in ga izberite, da ga zamenjate."
 }

@@ -79,5 +79,7 @@
   "The desktop file chooser (xdg-desktop-portal) is not available.": "Pemilih fail desktop (xdg-desktop-portal) tidak tersedia.",
   "Could not listen for the file chooser's answer.": "Tidak dapat menerima jawapan pemilih fail.",
   "The file chooser failed: %1": "Pemilih fail gagal: %1",
-  "Plan fluorophore panels against your lasers and filters": "Rancang panel fluorofor mengikut laser dan penapis anda"
+  "Plan fluorophore panels against your lasers and filters": "Rancang panel fluorofor mengikut laser dan penapis anda",
+  "%1's detector sees almost none of its light": "Pengesan %1 hampir tidak nampak cahayanya",
+  "%1 already exists. Save again and choose it to replace it.": "%1 sudah wujud. Simpan sekali lagi dan pilihnya untuk menggantikannya."
 }
