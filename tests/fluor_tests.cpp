@@ -220,6 +220,57 @@ private slots:
             QVERIFY(std::abs(hit.toMap()["ex"].toDouble() - 640) <= 30 || std::abs(hit.toMap()["em"].toDouble() - 640) <= 15);
     }
 
+    void aDetectorThatMissesItsDyeIsAnError()
+    {
+        // FITC under a red filter: the laser excites it, the filter passes none of it.
+        Panel panel = emptyPanel("vbr");
+        panel.dyes << PanelDye{*spectra::findInLibrary("FITC"), false, 488, {780, 60}};
+        const auto analysis = analyze(panel);
+        QCOMPARE(analysis.errors(), 1);
+        QCOMPARE(analysis.issues[0].kind, Issue::Blind);
+    }
+
+    void anUnseenPinnedDyeDoesntStopPlacement()
+    {
+        // BUV395 pinned under the red laser, which can't see it, must not keep
+        // the others from being placed well.
+        Panel panel = emptyPanel("vbyr");
+        panel.dyes << PanelDye{*spectra::findInLibrary("BUV395"), false, 640, {670, 30}};
+        for (const char *name : {"PE", "PE-Cy5", "PerCP-Cy5.5"})
+            panel.dyes << PanelDye{*spectra::findInLibrary(name), false, 0, {}};
+        Panel free = panel;
+        free.dyes.removeFirst();
+        autoAssign(panel, false);
+        autoAssign(free, false);
+        for (int d = 1; d < panel.dyes.size(); ++d) {
+            QCOMPARE(panel.dyes[d].laser, free.dyes[d - 1].laser);
+            QCOMPARE(panel.dyes[d].band, free.dyes[d - 1].band);
+        }
+        QCOMPARE(panel.dyes[0].laser, 640);
+    }
+
+    void presetsLeaveDeliberatelyUnplacedDyesAlone()
+    {
+        Backend backend;
+        backend.addDye("FITC");
+        backend.addDye("APC");
+        backend.setChannel(1, -1);
+        backend.applyPreset("vbyr");
+        QVERIFY(backend.panel().dyes[0].assigned());
+        QVERIFY(!backend.panel().dyes[1].assigned());
+    }
+
+    void loadingRejectsDetectorsTheInstrumentLacks()
+    {
+        QString error;
+        Panel::fromJson(QJsonDocument::fromJson(
+            R"({"lasers": [{"nm": 488, "filters": ["530/30"]}], "dyes": [{"name": "FITC", "laser": 488, "filter": "530/31"}]})").object(), &error);
+        QVERIFY2(error.contains("doesn't have"), qPrintable(error));
+        Panel::fromJson(QJsonDocument::fromJson(
+            R"({"lasers": [], "dyes": [{"name": "Glow", "ex": 500, "em": 540, "brightness": 0}]})").object(), &error);
+        QVERIFY2(error.contains("brightness"), qPrintable(error));
+    }
+
     void themeFallsBack()
     {
         QTemporaryDir dir;

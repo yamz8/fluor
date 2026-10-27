@@ -49,8 +49,8 @@ Panel emptyPanel(const QString &preset = {});
 
 // Gives every dye without a detector the free one that sees it best, taking
 // the dyes whose best detector is clearest first. With reassignAll, every dye
-// is placed again from scratch; with only set, just that dye is placed.
-void autoAssign(Panel &panel, bool reassignAll, int only = -1);
+// is placed again from scratch; with only given, just those dyes are placed.
+void autoAssign(Panel &panel, bool reassignAll, const QList<int> &only = {});
 
 struct Issue {
     enum Kind {
@@ -60,6 +60,7 @@ struct Issue {
         Dim,         // a's laser barely excites it; value is the excitation
         Spill,       // a spills value (of its own signal) into b's detector
         Similar,     // a and b have signatures this similar (cosine)
+        Blind,       // a sits on a detector that sees almost none of it; value is its signal there
     };
     enum Severity { Error, Warning, Note };
 

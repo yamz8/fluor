@@ -164,7 +164,7 @@ QVariantList Backend::spill() const {
 }
 
 QVariantList Backend::issues() const {
-    static const char *kinds[] = {"unassigned", "unseen", "shared", "dim", "spill", "similar"};
+    static const char *kinds[] = {"unassigned", "unseen", "shared", "dim", "spill", "similar", "blind"};
     static const char *severities[] = {"error", "warning", "note"};
     QVariantList list;
     for (const auto &issue : m_analysis.issues) {
@@ -263,7 +263,7 @@ bool Backend::addDye(const QString &name) {
         panel.dyes << PanelDye{*dye, false, 0, {}};
         // Only the new dye is placed; anything else left without a detector
         // stays that way until the user asks for an auto-assign.
-        ::autoAssign(panel, false, panel.dyes.size() - 1);
+        ::autoAssign(panel, false, {int(panel.dyes.size()) - 1});
     });
     return true;
 }
@@ -309,11 +309,16 @@ void Backend::applyPreset(const QString &id) {
         return;
     edit([preset](Panel &panel) {
         panel.lasers = preset->lasers;
-        // Dyes whose detector the new instrument lacks are placed again.
+        // Only dyes whose detector the new instrument lacks are placed again;
+        // a dye deliberately left without one stays that way.
+        QList<int> lost;
         for (int d = 0; d < panel.dyes.size(); ++d)
-            if (panel.channelOf(d) < 0)
+            if (panel.dyes[d].assigned() && panel.channelOf(d) < 0) {
                 panel.unassign(d);
-        ::autoAssign(panel, false);
+                lost << d;
+            }
+        if (!lost.isEmpty())
+            ::autoAssign(panel, false, lost);
     });
 }
 

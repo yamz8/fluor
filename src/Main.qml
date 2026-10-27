@@ -54,6 +54,7 @@ ApplicationWindow {
         case "shared": return qsTr("%1 and %2 share the %3 detector").arg(issue.a).arg(issue.b).arg(issue.aChannel)
         case "dim": return qsTr("The %1 nm laser excites %2 at only %3 of its peak").arg(num(issue.laser)).arg(issue.a).arg(pct(issue.value))
         case "spill": return qsTr("%1 spills %2 into %3's detector").arg(issue.a).arg(pct(issue.value)).arg(issue.b)
+        case "blind": return qsTr("%1's detector sees almost none of its light").arg(issue.a)
         case "similar": return qsTr("%1 and %2 look alike across every detector").arg(issue.a).arg(issue.b)
         }
         return ""

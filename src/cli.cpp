@@ -31,7 +31,7 @@ const char *severityName(Issue::Severity severity) {
 }
 
 const char *kindName(Issue::Kind kind) {
-    static const char *names[] = {"unassigned", "unseen", "shared", "dim", "spill", "similar"};
+    static const char *names[] = {"unassigned", "unseen", "shared", "dim", "spill", "similar", "blind"};
     return names[kind];
 }
 
@@ -56,6 +56,8 @@ QString message(const Panel &panel, const Analysis &analysis, const Issue &issue
     case Issue::Spill:
         return QString("%1 spills %2 of its signal into %3's detector (%4).")
             .arg(a, percent(issue.value), b, channelName(analysis, issue.b));
+    case Issue::Blind:
+        return a + "'s detector (" + channelName(analysis, issue.a) + ") sees almost none of its light.";
     case Issue::Similar:
         return QString("%1 and %2 look alike across every detector (similarity %3), so they are hard to unmix.")
             .arg(a, b, QString::number(issue.value, 'f', 2));

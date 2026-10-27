@@ -119,6 +119,8 @@ Panel Panel::fromJson(const QJsonObject &object, QString *error) {
             entry.custom = true;
             entry.dye = Dye{name, item.value("ex").toDouble(), item.value("em").toDouble(),
                             item.value("brightness").toDouble(3)};
+            if (entry.dye.brightness < 1 || entry.dye.brightness > 5)
+                return failWith(error, QString("Dye %1's brightness must be from 1 (dim) to 5 (very bright).").arg(name));
             if (entry.dye.ex < spectra::First || entry.dye.em <= entry.dye.ex || entry.dye.em > spectra::Last)
                 return failWith(error, QString("Dye %1 needs an excitation peak (ex) below its emission peak (em), "
                                                "both between %2 and %3 nm.")
@@ -137,6 +139,9 @@ Panel Panel::fromJson(const QJsonObject &object, QString *error) {
             entry.laser = item.value("laser").toInt();
         }
         panel.dyes << entry;
+        if (entry.assigned() && panel.channelOf(panel.dyes.size() - 1) < 0)
+            return failWith(error, QString("Dye %1 is on the %2 nm laser's %3 filter, which the instrument doesn't have.")
+                                       .arg(name).arg(entry.laser).arg(entry.band.name()));
     }
     return panel;
 }
@@ -223,8 +228,12 @@ double placementCost(const QVector<QVector<double>> &signal, const QVector<doubl
         if (seat[a] < 0)
             continue;
         const double own = signal[a][seat[a]];
-        if (own <= 0)
-            return 1e9;
+        // A dye its detector can't see is reported on its own; dividing by
+        // its near-zero signal would drown every other difference.
+        if (own < MinSignal) {
+            cost += 1;
+            continue;
+        }
         cost += 0.5 * (1 - own / best[a]);
         for (int b = 0; b < seat.size(); ++b)
             if (b != a && seat[b] >= 0) {
@@ -237,7 +246,7 @@ double placementCost(const QVector<QVector<double>> &signal, const QVector<doubl
 
 }  // namespace
 
-void autoAssign(Panel &panel, bool reassignAll, int only) {
+void autoAssign(Panel &panel, bool reassignAll, const QList<int> &only) {
     const auto channels = panel.channels();
     const int n = panel.dyes.size();
     QVector<bool> taken(channels.size(), false), movable(n, false);
@@ -248,7 +257,7 @@ void autoAssign(Panel &panel, bool reassignAll, int only) {
         if (channel >= 0 && !taken[channel]) {
             taken[channel] = true;
             seat[d] = channel;
-        } else if (only < 0 || d == only) {
+        } else if (only.isEmpty() || only.contains(d)) {
             waiting << d;
             movable[d] = true;
         }
@@ -409,8 +418,13 @@ Analysis analyze(const Panel &panel) {
             add(seen ? Issue::Unassigned : Issue::Unseen, Issue::Error, a, -1, 0);
             continue;
         }
+        // A detector that barely sees its dye is an error whatever the cause,
+        // a laser that misses it or a filter that misses its emission; a dim
+        // laser on an otherwise good detector is only a warning.
         const double excitation = curves[a].excitationAt(result.channels[own].nm);
-        if (excitation < DimExcitation)
+        if (result.signal[a][own] < MinSignal)
+            add(Issue::Blind, Issue::Error, a, -1, result.signal[a][own]);
+        else if (excitation < DimExcitation)
             add(Issue::Dim, Issue::Warning, a, -1, excitation);
         for (int b = 0; b < n; ++b) {
             if (b == a || result.assigned[b] < 0)
@@ -432,7 +446,9 @@ Analysis analyze(const Panel &panel) {
     // Errors first, then the worst overlaps.
     std::stable_sort(result.issues.begin(), result.issues.end(), [](const Issue &x, const Issue &y) {
         // A dim dye is worse the less it is excited; everything else the higher its value.
-        auto weight = [](const Issue &issue) { return issue.kind == Issue::Dim ? 1 - issue.value : issue.value; };
+        auto weight = [](const Issue &issue) {
+            return issue.kind == Issue::Dim || issue.kind == Issue::Blind ? 1 - issue.value : issue.value;
+        };
         if (x.severity != y.severity)
             return x.severity < y.severity;
         return weight(x) > weight(y);
