@@ -107,6 +107,9 @@ ApplicationWindow {
     Connections {
         target: backend
         function onSaved() { if (win.pending !== "") win.run(win.pending) }
+        // A save that didn't happen must not leave its quit or new waiting
+        // to fire after some later, unrelated save.
+        function onSaveAbandoned() { win.pending = "" }
         function onChanged() {
             if (win.selected >= backend.dyes.length) win.selected = backend.dyes.length - 1
             if (win.selected < 0 && backend.dyes.length > 0) win.selected = 0

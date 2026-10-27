@@ -217,12 +217,11 @@ void PortalFilePicker::handleResponse(uint response, const QVariantMap &results)
     const Action action = m_pendingAction;
     clearPending();
 
-    if (response != 0)
-        return;
-
     const QStringList uris = results.value(QStringLiteral("uris")).toStringList();
-    if (uris.isEmpty())
+    if (response != 0 || uris.isEmpty()) {
+        emit cancelled();
         return;
+    }
 
     const QUrl url(uris.first());
     if (action == Action::Open)

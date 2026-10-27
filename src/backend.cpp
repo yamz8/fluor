@@ -61,12 +61,27 @@ Backend::Backend(FilePicker *picker, QObject *parent)
         connect(m_picker, &FilePicker::openSelected, this, [this](const QUrl &url) { load(url.toString()); });
         connect(m_picker, &FilePicker::saveSelected, this, [this](const QUrl &url) {
             QString path = url.toLocalFile();
-            if (QFileInfo(path).suffix().isEmpty())
+            // The file chooser only confirmed replacing the name as typed, so
+            // the name with .fluor added must not already be taken.
+            if (QFileInfo(path).suffix().isEmpty()) {
                 path += ".fluor";
+                if (QFileInfo::exists(path)) {
+                    setError(tr("%1 already exists. Save again and choose it to replace it.")
+                                 .arg(QFileInfo(path).fileName()));
+                    emit saveAbandoned();
+                    return;
+                }
+            }
             if (writeTo(path))
                 emit saved();
+            else
+                emit saveAbandoned();
         });
-        connect(m_picker, &FilePicker::failed, this, &Backend::setError);
+        connect(m_picker, &FilePicker::cancelled, this, &Backend::saveAbandoned);
+        connect(m_picker, &FilePicker::failed, this, [this](const QString &message) {
+            setError(message);
+            emit saveAbandoned();
+        });
     }
     refresh();
 }
@@ -503,6 +518,8 @@ void Backend::save() {
     }
     if (writeTo(m_path))
         emit saved();
+    else
+        emit saveAbandoned();
 }
 
 void Backend::saveAs() {

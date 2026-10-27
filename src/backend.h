@@ -87,6 +87,9 @@ signals:
     void changed();
     void errorChanged();
     void saved();
+    // A save that was asked for didn't happen: the dialog was cancelled or
+    // failed, or the file couldn't be written.
+    void saveAbandoned();
 
 private:
     // Applies one edit as an undoable step. Edits sharing a key within a

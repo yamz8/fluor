@@ -16,12 +16,15 @@
 // Answers save dialogs with a fixed path, as a user would.
 class FakePicker : public FilePicker {
 public:
-    QString savePath;
+    QString savePath;  // empty answers by cancelling
     int saves = 0;
     void openPanel() override {}
     void savePanel(const QUrl &) override {
         ++saves;
-        emit saveSelected(QUrl::fromLocalFile(savePath));
+        if (savePath.isEmpty())
+            emit cancelled();
+        else
+            emit saveSelected(QUrl::fromLocalFile(savePath));
     }
 };
 
@@ -301,6 +304,38 @@ private slots:
         QString error;
         Panel::fromJson(QJsonDocument::fromJson(R"({"lasers": [{"nm": 488}, {"nm": 488}]})").object(), &error);
         QVERIFY(error.contains("two 488 nm lasers"));
+    }
+
+    void aSaveThatDoesntHappenSaysSo()
+    {
+        QTemporaryDir dir;
+        FakePicker picker;
+        Backend backend(&picker);
+        QSignalSpy saved(&backend, &Backend::saved), abandoned(&backend, &Backend::saveAbandoned);
+        backend.addDye("APC");
+        backend.save();
+        QCOMPARE(saved.count(), 0);
+        QCOMPARE(abandoned.count(), 1);
+        QVERIFY(backend.dirty());
+    }
+
+    void addingTheExtensionNeverReplacesAFile()
+    {
+        QTemporaryDir dir;
+        QFile existing(dir.filePath("tcell.fluor"));
+        QVERIFY(existing.open(QIODevice::WriteOnly));
+        existing.write("precious");
+        existing.close();
+        FakePicker picker;
+        picker.savePath = dir.filePath("tcell");
+        Backend backend(&picker);
+        QSignalSpy abandoned(&backend, &Backend::saveAbandoned);
+        backend.addDye("APC");
+        backend.save();
+        QCOMPARE(abandoned.count(), 1);
+        QVERIFY(backend.error().contains("tcell.fluor"));
+        QVERIFY(existing.open(QIODevice::ReadOnly));
+        QCOMPARE(existing.readAll(), QByteArray("precious"));
     }
 
     void themeFallsBack()

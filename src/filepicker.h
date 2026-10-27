@@ -17,5 +17,7 @@ public:
 signals:
     void openSelected(const QUrl &url);
     void saveSelected(const QUrl &url);
+    // The dialog was closed without picking a file.
+    void cancelled();
     void failed(const QString &message);
 };
