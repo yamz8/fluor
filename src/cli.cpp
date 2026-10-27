@@ -17,12 +17,18 @@
 
 namespace {
 
-void print(FILE *stream, const QString &text) { fprintf(stream, "%s\n", qPrintable(text)); }
+void print(FILE *stream, const QString &text) {
+    // Errors go to stderr between lines of stdout; flush so they stay in order.
+    fflush(stdout);
+    fprintf(stream, "%s\n", qPrintable(text));
+}
 void print(const QJsonObject &object) { fprintf(stdout, "%s", QJsonDocument(object).toJson().constData()); }
 int fail(const QString &message) {
     print(stderr, message);
     return 1;
 }
+
+QString count(int n, const QString &noun) { return QString("%1 %2%3").arg(n).arg(noun, n == 1 ? "" : "s"); }
 
 QString percent(double value) { return QString::number(int(std::round(value * 100))) + "%"; }
 
@@ -156,9 +162,9 @@ int check(const QStringList &arguments) {
         return errors ? 1 : 0;
     }
 
-    print(stdout, QString("%1%2 dyes, %3 detectors")
-                      .arg(panel.title.isEmpty() ? QString() : panel.title + ": ")
-                      .arg(n).arg(analysis.channels.size()));
+    print(stdout, QString("%1%2, %3")
+                      .arg(panel.title.isEmpty() ? QString() : panel.title + ": ",
+                           count(n, "dye"), count(analysis.channels.size(), "detector")));
     printAssignments(panel, analysis);
     if (n > 1) {
         print(stdout, "\nSpillover: each row's signal in each column's detector, as a share of its own");
@@ -182,8 +188,8 @@ int check(const QStringList &arguments) {
               QString("%1: %2").arg(severityName(issue.severity), message(panel, analysis, issue)));
     const int warnings = int(std::count_if(analysis.issues.cbegin(), analysis.issues.cend(),
                                            [](const Issue &i) { return i.severity == Issue::Warning; }));
-    print(stdout, QString("\nWorst spillover %1; %2 errors, %3 warnings")
-                      .arg(percent(analysis.worstSpill)).arg(errors).arg(warnings));
+    print(stdout, QString("\nWorst spillover %1; %2, %3")
+                      .arg(percent(analysis.worstSpill), count(errors, "error"), count(warnings, "warning")));
     return errors ? 1 : 0;
 }
 
