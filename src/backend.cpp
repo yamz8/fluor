@@ -88,13 +88,24 @@ Backend::Backend(FilePicker *picker, QObject *parent)
 
 QString Backend::fileName() const { return m_path.isEmpty() ? QString() : QFileInfo(m_path).fileName(); }
 
-bool Backend::dirty() const { return m_panel.toJson() != m_saved; }
 
 void Backend::refresh() {
     m_analysis = analyze(m_panel);
     m_curves.clear();
     for (const auto &entry : m_panel.dyes)
         m_curves << spectra::spectrum(entry.dye);
+    publish();
+}
+
+// QML reads these lists in many bindings after every change, so they are
+// built once here rather than on each read.
+void Backend::publish() {
+    m_dirty = m_panel.toJson() != m_saved;
+    m_dyes = buildDyes();
+    m_lasers = buildLasers();
+    m_channels = buildChannels();
+    m_spill = buildSpill();
+    m_issues = buildIssues();
     emit changed();
 }
 
@@ -140,7 +151,7 @@ void Backend::redo() {
     refresh();
 }
 
-QVariantList Backend::dyes() const {
+QVariantList Backend::buildDyes() const {
     QVariantList list;
     for (int d = 0; d < m_panel.dyes.size(); ++d) {
         const auto &entry = m_panel.dyes[d];
@@ -164,7 +175,7 @@ QVariantList Backend::dyes() const {
     return list;
 }
 
-QVariantList Backend::lasers() const {
+QVariantList Backend::buildLasers() const {
     QVariantList list;
     for (const auto &laser : m_panel.lasers) {
         QVariantList filters;
@@ -176,7 +187,7 @@ QVariantList Backend::lasers() const {
     return list;
 }
 
-QVariantList Backend::channels() const {
+QVariantList Backend::buildChannels() const {
     QVariantList list;
     for (const auto &channel : m_analysis.channels)
         list << QVariantMap{{"name", channel.name()}, {"nm", channel.nm}, {"laser", channel.laser},
@@ -185,7 +196,7 @@ QVariantList Backend::channels() const {
     return list;
 }
 
-QVariantList Backend::spill() const {
+QVariantList Backend::buildSpill() const {
     QVariantList rows;
     for (int a = 0; a < m_panel.dyes.size(); ++a) {
         QVariantList cells;
@@ -198,7 +209,7 @@ QVariantList Backend::spill() const {
     return rows;
 }
 
-QVariantList Backend::issues() const {
+QVariantList Backend::buildIssues() const {
     static const char *kinds[] = {"unassigned", "unseen", "shared", "dim", "spill", "similar", "blind"};
     static const char *severities[] = {"error", "warning", "note"};
     QVariantList list;
@@ -507,7 +518,7 @@ bool Backend::writeTo(const QString &path) {
     m_path = QFileInfo(path).absoluteFilePath();
     m_saved = m_panel.toJson();
     clearError();
-    emit changed();
+    publish();
     return true;
 }
 

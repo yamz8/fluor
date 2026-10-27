@@ -71,13 +71,15 @@ Popup {
                         id: card
                         readonly property int laser: index
                         readonly property var info: backend.lasers[index] || ({ nm: 0, color: "#ffffff", filters: [] })
+                        // The backend hands colors over as hex strings.
+                        readonly property color tint: info.color
                         Layout.fillWidth: true
                         Layout.leftMargin: 16
                         Layout.rightMargin: 16
                         implicitHeight: cardColumn.implicitHeight + 24
                         color: "#1c1c22"
                         radius: theme.radius
-                        border.color: Qt.rgba(card.info.color.r, card.info.color.g, card.info.color.b, 0.35)
+                        border.color: Qt.rgba(card.tint.r, card.tint.g, card.tint.b, 0.35)
 
                         ColumnLayout {
                             id: cardColumn

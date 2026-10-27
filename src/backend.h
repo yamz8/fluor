@@ -40,14 +40,14 @@ public:
     QString title() const { return m_panel.title; }
     QString fileName() const;
     QString filePath() const { return m_path; }
-    bool dirty() const;
+    bool dirty() const { return m_dirty; }
     bool canUndo() const { return !m_undo.isEmpty(); }
     bool canRedo() const { return !m_redo.isEmpty(); }
-    QVariantList dyes() const;
-    QVariantList lasers() const;
-    QVariantList channels() const;
-    QVariantList spill() const;
-    QVariantList issues() const;
+    QVariantList dyes() const { return m_dyes; }
+    QVariantList lasers() const { return m_lasers; }
+    QVariantList channels() const { return m_channels; }
+    QVariantList spill() const { return m_spill; }
+    QVariantList issues() const { return m_issues; }
     double worstSpill() const { return m_analysis.worstSpill; }
     int errorCount() const { return m_analysis.errors(); }
     QVariantList presets() const;
@@ -96,6 +96,12 @@ private:
     // moment (a spin box being stepped) collapse into one step.
     void edit(const std::function<void(Panel &)> &change, const QString &key = {});
     void refresh();
+    void publish();
+    QVariantList buildDyes() const;
+    QVariantList buildLasers() const;
+    QVariantList buildChannels() const;
+    QVariantList buildSpill() const;
+    QVariantList buildIssues() const;
     void setError(const QString &message);
     bool writeTo(const QString &path);
 
@@ -109,4 +115,6 @@ private:
     QString m_lastKey;
     QElapsedTimer m_lastEdit;
     QString m_error;
+    bool m_dirty = false;
+    QVariantList m_dyes, m_lasers, m_channels, m_spill, m_issues;
 };
